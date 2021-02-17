@@ -55,9 +55,16 @@ namespace Echo
             while (true)
             {
 
-                string str = reader.ReadString();
+                string[] str = reader.ReadString().Split(" ");
+                string text = "";
+                if (str[0] == "GET")
+                {
+                    text = File.ReadAllText("C:\\Users\\Alexandre MAZURIER\\Documents\\Documents Cours\\Polytech\\SI4\\Soc-WS\\TD1\\Echo\\ChatServer\\www\\pub\\" + str[1], Encoding.UTF8);
+                    Console.WriteLine("Accès au fichier " + str[1]);
+                    Console.WriteLine(text);
+                }
                 Console.WriteLine(str);
-                writer.Write(str);
+                writer.Write("http/1.0 200 OK\n\n" + text);
             }
         }
 

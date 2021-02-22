@@ -10,44 +10,20 @@ namespace BasicServerHTTPlistener
     class Header
     {
 
-        private string mime;
-        private string charset;
-        private string encoding;
-        private string langage;
-        private string methods;
-        private string authorizations;
-        private string cookie;
-        private string from;
-        private string host;
+        private WebHeaderCollection header;
 
-        public Header(WebHeaderCollection headers)
+        public Header(WebHeaderCollection header)
         {
-            mime = headers.Get(HttpRequestHeader.Accept.ToString());
-            charset = headers.Get(HttpRequestHeader.AcceptCharset.ToString());
-            encoding = headers.Get(HttpRequestHeader.AcceptEncoding.ToString());
-            langage = headers.Get(HttpRequestHeader.AcceptLanguage.ToString());
-            methods = headers.Get(HttpRequestHeader.Allow.ToString());
-            authorizations = headers.Get(HttpRequestHeader.Authorization.ToString());
-            cookie = headers.Get(HttpRequestHeader.Cookie.ToString());
-            from = headers.Get(HttpRequestHeader.From.ToString());
-            host = headers.Get(HttpRequestHeader.Host.ToString());
+            this.header = header;
         }
 
         public void display()
         {
-            Console.WriteLine($"MIME : {mime}");
-            Console.WriteLine($"Charset: {charset}");
-            Console.WriteLine($"Encoding: {encoding}");
-            Console.WriteLine($"Langage: {langage}");
-            Console.WriteLine($"Methods: {methods}");
-            Console.WriteLine($"Authorizations: {authorizations}");
-            Console.WriteLine($"Cookie: {cookie}");
-            Console.WriteLine($"From: {from}");
-            Console.WriteLine($"Host: {host}");
+            for(int i = 0; i<header.Count; i++ )
+            {
+                Console.WriteLine(header.GetKey(i) + ": " + header.Get(i));
+            }
         }
-
-
-
 
     }
 }

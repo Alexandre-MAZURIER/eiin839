@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace ListContract
 {
@@ -26,7 +28,14 @@ namespace ListContract
                 // Above three lines can be replaced with new helper method below
                 // string responseBody = await client.GetStringAsync(uri);
 
-                Console.WriteLine(responseBody);
+
+                Contract[] contracts = JsonSerializer.Deserialize<Contract[]>(responseBody);
+                foreach(Contract c in contracts)
+                {
+                    Console.WriteLine(c);
+                }
+               
+
                 Console.ReadLine();
             }
             catch (HttpRequestException e)

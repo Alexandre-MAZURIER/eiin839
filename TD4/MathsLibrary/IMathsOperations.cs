@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 using System.Text;
 
 namespace MathsLibrary
@@ -12,15 +13,19 @@ namespace MathsLibrary
     {
 
         [OperationContract]
+        [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json, UriTemplate = "Add?x={a}&y={b}")]
         int Add(int a, int b);
 
         [OperationContract]
+        [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json, UriTemplate = "Multiply?x={a}&y={b}")]
         int Multiply(int a, int b);
 
         [OperationContract]
+        [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json, UriTemplate = "Substract?x={a}&y={b}")]
         int Substract(int a, int b);
 
         [OperationContract]
+        [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json, UriTemplate = "Divide?x={a}&y={b}")]
         float Divide(int a, int b);
 
         // TODO: ajoutez vos opérations de service ici

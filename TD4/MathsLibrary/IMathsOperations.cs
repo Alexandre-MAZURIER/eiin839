@@ -10,11 +10,18 @@ namespace MathsLibrary
     [ServiceContract]
     public interface IMathsOperations
     {
-        [OperationContract]
-        string GetData(int value);
 
         [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
+        int Add(int a, int b);
+
+        [OperationContract]
+        int Multiply(int a, int b);
+
+        [OperationContract]
+        int Substract(int a, int b);
+
+        [OperationContract]
+        float Divide(int a, int b);
 
         // TODO: ajoutez vos opérations de service ici
     }

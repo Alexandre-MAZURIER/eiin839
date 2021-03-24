@@ -9,22 +9,24 @@ namespace MathsLibrary
     // REMARQUE : vous pouvez utiliser la commande Renommer du menu Refactoriser pour changer le nom de classe "Service1" à la fois dans le code et le fichier de configuration.
     public class MathsOperations : IMathsOperations
     {
-        public string GetData(int value)
+        public int Add(int a, int b)
         {
-            return string.Format("You entered: {0}", value);
+            return a + b;
         }
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        public float Divide(int a, int b)
         {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
+            return a / b;
+        }
+
+        public int Multiply(int a, int b)
+        {
+            return a * b;
+        }
+
+        public int Substract(int a, int b)
+        {
+            return Add(a, -b);
         }
     }
 }
